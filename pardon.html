@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Je suis désolé, mon amour</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0608;
+      --rose: #c0394b;
+      --blush: #e8a0aa;
+      --cream: #f5ede8;
+      --gold: #c9a96e;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .petal-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 18px;
+      background: radial-gradient(ellipse at 40% 30%, #e8a0aa, #c0394b88);
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-40px) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, #c0394b22 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .heart-icon {
+      font-size: 5rem;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      display: block;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px #c0394b88);
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14%       { transform: scale(1.2); }
+      28%       { transform: scale(1); }
+      42%       { transform: scale(1.1); }
+      56%       { transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      text-shadow: 0 0 40px #c0394b55;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--blush);
+    }
+
+    .subtitle {
+      margin-top: 16px;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--blush);
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .divider {
+      margin: 48px auto;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      animation: fadeUp 1.6s ease both;
+    }
+
+    .letter {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      line-height: 1.85;
+      font-weight: 300;
+      color: #e8ddd8;
+      text-align: left;
+      animation: fadeUp 1.8s ease both;
+    }
+
+    .letter p + p {
+      margin-top: 1.4em;
+    }
+
+    .letter strong {
+      color: var(--blush);
+      font-weight: 400;
+    }
+
+    .sign-off {
+      margin-top: 48px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: var(--gold);
+      text-align: center;
+      animation: fadeUp 2s ease both;
+    }
+
+    .promises {
+      position: relative;
+      z-index: 1;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .promises h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 48px;
+      letter-spacing: 0.04em;
+    }
+
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .promise-card {
+      border: 1px solid #c0394b44;
+      border-radius: 4px;
+      padding: 32px 24px;
+      background: #1a080c;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .promise-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--rose);
+    }
+
+    .promise-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .promise-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #d4c4c0;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 60px 24px;
+      text-align: center;
+      border-top: 1px solid #c0394b22;
+    }
+
+    .big-heart {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px #c0394baa);
+    }
+
+    .footer p {
+      font-size: 1rem;
+      color: #8a6a70;
+      font-style: italic;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="petal-bg" id="petals"></div>
+
+<section class="hero">
+  <span class="heart-icon">❤️</span>
+  <h1>Je suis <em>sincèrement</em><br>désolé, mon amour</h1>
+  <p class="subtitle">Du plus profond de mon cœur</p>
+  <div class="divider"></div>
+
+  <div class="letter">
+    <p>
+      Mon amour, je dois que tu saches que <strong>je t'ai blessée</strong>, et cela me pèse plus que les mots ne peuvent l'exprimer.
+      Ce que j'ai fait était mal. C'était une trahison de ta confiance, et tu mérites tellement mieux que ça.
+    </p>
+    <p>
+      Je n'écris pas ceci pour trouver des excuses — il n'en existe aucune qui serait suffisante.
+      J'écris ceci parce que <strong>tu comptes pour moi</strong> plus que tout au monde, et je refuse de laisser mon erreur
+      nous définir sans me battre de toutes mes forces pour arranger les choses.
+    </p>
+    <p>
+      Tu m'as donné ton cœur, ton temps, ton amour — et je n'ai pas su l'honorer comme tu le méritais.
+      Je suis profondément, sincèrement et <strong>complètement désolé</strong>.
+    </p>
+    <p>
+      Si tu m'en donnes la chance, je passerai chaque jour à te montrer — pas seulement à te dire — que tu es
+      la seule que je veux, la seule que je choisis, et la seule qui possède tout mon cœur.
+    </p>
+  </div>
+
+  <p class="sign-off">— À toi, toujours & pour toujours 🌹</p>
+</section>
+
+
+<script>
+  const container = document.getElementById('petals');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.width  = (8 + Math.random() * 10) + 'px';
+    p.style.height = (12 + Math.random() * 14) + 'px';
+    p.style.animationDuration = (6 + Math.random() * 10) + 's';
+    p.style.animationDelay   = (Math.random() * 10) + 's';
+    p.style.opacity = 0.4 + Math.random() * 0.4;
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>
